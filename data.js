@@ -169,6 +169,17 @@ const products = [
   },
 ];
 
+let cartCount = 0;
+let totalSum = 0;
+
+function addToCart(price) {
+  cartCount++;
+  totalSum = totalSum + price;
+   document.getElementById("cart-total").innerText = cartCount;
+   document.getElementById("cart-count").innerText = cartCount;
+   document.getElementById("sum-total").innerText = totalSum;
+}
+
 function showProducts() {
   for (let product of products) {
     const productCard = document.createElement("div");
@@ -189,13 +200,16 @@ function showProducts() {
               <p class="text-xl">$ ${product.price}</p>
             </div>
             <div class="card-actions">
-              <button onclick="add2Cart( ${product.price})" class="btn btn-success text-white">Add to Cart</button>
+              <button onclick="addToCart( ${product.price})" class="btn btn-success text-white">Add to Cart</button>
             </div>
           </div>
         </div>
     `;
     document.getElementById("product-container").append(productCard);
   }
+  document.getElementById("cart-total").innerText = cartCount;
+  document.getElementById("cart-count").innerText = cartCount;
+  document.getElementById("sum-total").innerText = totalSum;
 }
 
 showProducts();
