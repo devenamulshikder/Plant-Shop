@@ -168,3 +168,34 @@ const products = [
     id: 23,
   },
 ];
+
+function showProducts() {
+  for (let product of products) {
+    const productCard = document.createElement("div");
+    productCard.innerHTML = `
+        
+        <div class="card bg-base-100 shadow-md product-card">
+          <figure class="px-10 pt-10">
+            <img
+              src="${product.img_url}"
+              alt="Shoes"
+              class="rounded-xl"
+            />
+          </figure>
+          <div class="card-body items-center text-center">
+            <h2 class="card-title">${product.name}</h2>
+            <div class="flex justify-center gap-3">
+              <p class="text-lg opacity-30 line-through">$200</p>
+              <p class="text-xl">$ ${product.price}</p>
+            </div>
+            <div class="card-actions">
+              <button onclick="add2Cart( ${product.price})" class="btn btn-success text-white">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+    `;
+    document.getElementById("product-container").append(productCard);
+  }
+}
+
+showProducts();
